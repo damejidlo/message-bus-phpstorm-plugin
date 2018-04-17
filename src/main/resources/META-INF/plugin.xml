@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>cz.damejidlo.message-bus-phpstorm-plugin</id>
+    <name>Dáme jídlo message bus</name>
+    <vendor email="webmaster@damejidlo.cz" url="http://www.damejidlo.cz">Dáme jídlo</vendor>
+
+    <description><![CDATA[
+    Adds support for Dáme jídlo message bus library.
+    ]]></description>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.jetbrains.php</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <codeInsight.lineMarkerProvider language="PHP" implementationClass="MessageHandlersMarkerProvider"/>
+    </extensions>
+</idea-plugin>
