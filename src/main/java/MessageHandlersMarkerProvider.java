@@ -54,7 +54,7 @@ public class MessageHandlersMarkerProvider extends RelatedItemLineMarkerProvider
                 NavigationGutterIconBuilder.create(Icons.EVENT_ICON).
                         setTargets(targets).
                         setTooltipText("Attached handlers or subscribers");
-        result.add(builder.createLineMarkerInfo(element));
+        result.add(builder.createLineMarkerInfo(newExpressionElement.getFirstChild()));
     }
 
     @Nullable
