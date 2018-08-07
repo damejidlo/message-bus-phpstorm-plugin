@@ -1,5 +1,6 @@
 import com.intellij.codeInsight.daemon.*;
 import com.intellij.codeInsight.navigation.NavigationGutterIconBuilder;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.jetbrains.php.PhpIndex;
@@ -16,6 +17,8 @@ public class MessageHandlersMarkerProvider extends RelatedItemLineMarkerProvider
     private final static String EVENT_INTERFACE = "\\Damejidlo\\EventBus\\IDomainEvent";
     private final static String COMMAND_HANDLER_INTERFACE = "\\Damejidlo\\CommandBus\\ICommandHandler";
     private final static String EVENT_SUBSCRIBER_INTERFACE = "\\Damejidlo\\EventBus\\IEventSubscriber";
+
+    private final static Logger LOG = Logger.getInstance(MessageHandlersMarkerProvider.class);
 
     @Override
     protected void collectNavigationMarkers(@NotNull PsiElement element, @NotNull Collection<? super RelatedItemLineMarkerInfo> result) {

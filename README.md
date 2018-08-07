@@ -8,3 +8,12 @@ Do stormy se importuje zip build, např. `message-bus-phpstorm-plugin-1.0-SNAPSH
 
 * Gradle projects: Tasks -> intellij -> buildPlugin
 * viz build/distributions/
+
+## debug
+
+Ve službě `MessageHandlersMarkerProvider` použít připravený logger:
+```
+LOG.info("test");
+```
+
+Najít v logu `idea.log` položky `INFO - #MessageHandlersMarkerProvider`.
