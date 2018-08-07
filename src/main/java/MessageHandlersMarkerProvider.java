@@ -30,6 +30,12 @@ public class MessageHandlersMarkerProvider extends RelatedItemLineMarkerProvider
 
         final NewExpression newExpressionElement = (NewExpression) element;
 
+        // optimization
+        final String className = newExpressionElement.getType().toString();
+        if (!className.endsWith("Command") && !className.endsWith("Event")) {
+            return;
+        }
+
         final PhpClass elementClass = getPhpClass(newExpressionElement.getType(), newExpressionElement.getProject());
         if (elementClass == null) {
             return;
