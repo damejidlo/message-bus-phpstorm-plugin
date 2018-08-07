@@ -76,12 +76,8 @@ public class MessageHandlersMarkerProvider extends RelatedItemLineMarkerProvider
     }
 
     private boolean doesClassImplementInterface(@NotNull PhpClass phpClass, @NotNull String interfaceName) {
-        final String[] directlyImplementedInterfaceNames = phpClass.getInterfaceNames();
-
-        for (String implementedInterfaceName : directlyImplementedInterfaceNames) {
-            if (implementedInterfaceName.equals(interfaceName)) {
-                return true;
-            }
+        if (doesClassImplementInterfaceRecursive(phpClass, interfaceName)) {
+            return true;
         }
 
         final PhpClass superClass = phpClass.getSuperClass();
@@ -91,6 +87,22 @@ public class MessageHandlersMarkerProvider extends RelatedItemLineMarkerProvider
         } else {
             return doesClassImplementInterface(superClass, interfaceName);
         }
+    }
+
+    private boolean doesClassImplementInterfaceRecursive(@NotNull PhpClass phpClass, @NotNull String interfaceName) {
+        final PhpClass[] implementedInterfaces = phpClass.getImplementedInterfaces();
+
+        for (PhpClass implementedInterface : implementedInterfaces) {
+            if (implementedInterface.getFQN().equals(interfaceName) || doesClassImplementInterfaceRecursive(implementedInterface, interfaceName)) {
+                return true;
+            }
+
+            if (doesClassImplementInterfaceRecursive(implementedInterface, interfaceName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @NotNull
