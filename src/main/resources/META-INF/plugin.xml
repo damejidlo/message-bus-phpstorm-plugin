@@ -10,6 +10,8 @@
     <depends>com.intellij.modules.lang</depends>
     <depends>com.jetbrains.php</depends>
 
+    <idea-version since-build="182.0"/>
+
     <extensions defaultExtensionNs="com.intellij">
         <codeInsight.lineMarkerProvider language="PHP" implementationClass="MessageHandlersMarkerProvider"/>
     </extensions>

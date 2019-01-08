@@ -24,4 +24,5 @@ intellij {
     plugins = [
         "com.jetbrains.php:${phpPluginVersion}"
     ]
+    intellij.updateSinceUntilBuild false
 }
